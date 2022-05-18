@@ -20,6 +20,10 @@ coloredlogs.install(level='CRITICAL')
 coloredlogs.install(level='CRITICAL', logger=logger)
 
 
+OUTPUT_FOLDER = "lamper-output/"
+exportPath = OUTPUT_FOLDER  + pythontime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') + "/functions/"
+
+
 DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
 BYTE_TO_MB = 1024.0 * 1024.0
 
@@ -245,8 +249,8 @@ def create_tables(lambdas_data, args):
         """.replace("REGION", vizRegion))
 
 
-    with open('lamper.html', 'r') as file :
-      filedata = file.read()
+    report_template = requests.get("https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/report.html")
+    filedata = report_template
 
     # Replace the target string
     filedata = filedata.replace('REPLACE_REPORT_DATA', ''.join(report_rows))
@@ -273,10 +277,10 @@ def create_tables(lambdas_data, args):
 
 
     # Write the file out again
-    with open('lamper-report.html', 'w') as file:
+    with open(exportPath.replace('functions/', '') + '/Report.html', 'w') as file:
       file.write(filedata)
 
-    print("[Report] lamper-report.html is ready")
+    print("[Report] " + exportPath.replace('functions/', '') + '/Report.html' +" is ready")
 
     return min_table_data, all_table_data
 
@@ -285,38 +289,7 @@ def scan_secrets(lambda_package_zip):
     return lambda_package_zip + "_whisper_result"
 
 def scan_vulns(lambda_package_zip):
-
-
-
-    return lambda_package_zip + "_snyk_result"
-
-    if(not(os.path.exists(lambda_package_zip))):
-        result = "[Error] Path does not exists"
-        return result
-
-    if(not(os.path.exists("lambda-functions-scan"))):
-        os.mkdir("lambda-functions-scan")
-
-
-
-    lambda_package_name = lambda_package_zip.split("/")[-1]
-    extract_path = "lambda-functions-scan/" + lambda_package_name.replace(".zip", "")
-    os.mkdir(extract_path)
-
-
-    with zipfile.ZipFile(lambda_package_zip,"r") as zip_ref:
-        zip_ref.extractall(extract_path)
-
-    print("[Scanning] Package Extracted to: " + extract_path)
-
-    result = "empty"
-
-
-
-    exportPath = "lambda-functions-scan/" + pythontime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') + "/"
-
-    os.mkdir(exportPath)
-
+    return lambda_package_zip + "_vuln_scan"
 
 
 
@@ -326,14 +299,14 @@ def print_lambda_list(args):
 
 
 
-    if(not(os.path.exists("lambda-functions"))):
-        os.mkdir("lambda-functions")
+    if(not(os.path.exists(OUTPUT_FOLDER))):
+        os.makedirs(OUTPUT_FOLDER + "/functions/")
 
 
-    exportPath = "lambda-functions/" + pythontime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') + "/"
 
 
-    os.mkdir(exportPath)
+
+    os.makedirs(exportPath)
 
 
 

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/images/favicon-32x32.ico" type="image/png"/>
+    <!--plugins-->
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <!-- loader-->
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/css/pace.min.css" rel="stylesheet"/>
+    <script src="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/css/app.css" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/css/icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+
+
+    <style type="text/css">
+        #mynetwork {
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+<!--wrapper-->
+
+<div class="page-content">
+
+  <h1 class="mb-0 text-uppercase">Lamper Report <i class="fa fa-lightbulb"></i></h1>
+  <br>
+  <h5><i class="fa fa-clock"></i> Time: REPLACE_DATE</h5>
+    <br>
+    <br>
+    <h6 class="mb-0 text-uppercase"><i class="fa fa-gear"></i> Functions</h6>
+    <hr/>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example2" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Function</th>
+                        <th>Runtime</th>
+                        <th>Region</th>
+                        <th>Description</th>
+                        <th>Last Modified</th>
+                        <th>Last Invocation</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                  REPLACE_REPORT_DATA
+
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Function</th>
+                        <th>Runtime</th>
+                        <th>Region</th>
+                        <th>Description</th>
+                        <th>Last Modified</th>
+                        <th>Last Invocation</th>
+                        <th>Action</th>
+                    </tr>
+
+
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            Lamper is an open-source tool by <a href="https://www.mdsec.co.uk/">MDSec Consulting Ltd <img
+                src="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/images/favicon-32x32.ico" width="20" height="20"></a></div>
+    </div>
+
+    <h6 class="mb-0 text-uppercase"><i class="fa fa-route"></i> Relation Map</h6>
+    <hr/>
+    <div class="card">
+
+        <div class="card-body">
+
+            <div id="mynetwork"></div>
+
+
+        </div>
+
+    </div>
+
+
+    <h6 class="mb-0 text-uppercase"><i class="fa fa-list"></i> Runtime Usage</h6>
+    <hr/>
+    <div class="card">
+        <div class="card-body">
+            <div id="chart8"></div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script src="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/js/jquery.min.js"></script>
+
+<!--app JS-->
+<script src="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.2/apexcharts.min.js"></script>
+
+<script>
+    var options = {
+        series: REPLACE_COUNTS,
+        chart: {
+            foreColor: '#9ba7b2',
+            height: 330,
+            type: 'pie',
+        },
+        labels: REPLACE_LABELS,
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    height: 360
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#chart8"), options);
+    chart.render();
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+<script type="text/javascript">
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+
+        REPLACE_VIZ_REGIONS_NODES
+
+        REPLACE_VIZ_FUNCTIONS_NODES
+
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+
+        REPLACE_VIZ_REPLATION_NODES
+
+    ]);
+
+    // create a network
+    var container = document.getElementById("mynetwork");
+    var data = {
+        nodes: nodes,
+        edges: edges,
+    };
+    var options = {};
+    var network = new vis.Network(container, data, options);
+</script>
+
+</body>
+
+</html>
