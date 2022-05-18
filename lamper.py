@@ -1,7 +1,3 @@
-"""
-Enumerates Lambda functions from every region with interesting metadata
-"""
-
 from __future__ import print_function
 from datetime import datetime
 import argparse
