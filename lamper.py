@@ -43,6 +43,7 @@ def banner():
     print( colorama.Fore.LIGHTYELLOW_EX + """
      ____________________________
 < Lamper (AWS Lambda Mapper) By @MDSecLabs>
+< Version: 0.1.3 >
  ----------------------------
 \
  \
