@@ -6,7 +6,7 @@ import boto3
 from boto3.session import Session
 from botocore.exceptions import ClientError
 from terminaltables import AsciiTable
-import progressbar
+from tqdm import tqdm
 import os
 import uuid
 import requests
@@ -210,8 +210,7 @@ def create_tables(lambdas_data, args):
 
                                 <!--  <a href='{lambda_data['scan_secrets']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Secrets" type="button" class="btn btn-warning w-100"><i class="fa fa-key"></i></a> -->
                                 <!-- <a href='{lambda_data['scan_vulns']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Vulnerability Scan" type="button" class="btn btn-danger w-100"><i class="fa fa-bug"></i></a> -->
-                                <a href='{lambda_data['sourcecode']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Source Code" type="button" class="btn btn-primary w-100"><i class="fa fa-download"></i></a>
-
+                                <a href='{"functions" + lambda_data['sourcecode'].replace("lamper-output", '').split("functions")[1]}' target="_blank" data-toggle="tooltip" data-placement="top" title="Source Code" type="button" class="btn btn-primary w-100"><i class="fa fa-download"></i></a>
                                 </td>
                             </tr>
         """)
@@ -250,7 +249,7 @@ def create_tables(lambdas_data, args):
 
 
     report_template = requests.get("https://cdn.rawgit.com/sinsinology/Lamper-Cli/main/assets/plugins/report.html")
-    filedata = report_template
+    filedata = report_template.text
 
     # Replace the target string
     filedata = filedata.replace('REPLACE_REPORT_DATA', ''.join(report_rows))
@@ -280,7 +279,9 @@ def create_tables(lambdas_data, args):
     with open(exportPath.replace('functions/', '') + '/Report.html', 'w') as file:
       file.write(filedata)
 
-    print("[Report] " + exportPath.replace('functions/', '') + '/Report.html' +" is ready")
+    print("\r\n")
+    print(colorama.Fore.LIGHTGREEN_EX)
+    print("[Success] " + exportPath.replace('functions/', '') + 'Report.html' +" is ready")
 
     return min_table_data, all_table_data
 
@@ -300,8 +301,7 @@ def print_lambda_list(args):
 
 
     if(not(os.path.exists(OUTPUT_FOLDER))):
-        os.makedirs(OUTPUT_FOLDER + "/functions/")
-
+        os.mkdir(OUTPUT_FOLDER)
 
 
 
@@ -318,10 +318,9 @@ def print_lambda_list(args):
     logger.info("this is an informational message")
 
     regions = list_available_lambda_regions()
-    progress_bar = progressbar.ProgressBar(max_value=len(regions))
     lambdas_data = []
-    print(colorama.Fore.LIGHTGREEN_EX)
-    for region in progress_bar(regions):
+    print(colorama.Fore.LIGHTYELLOW_EX)
+    for region in tqdm(regions):
         lambda_client = init_boto_client('lambda', region, args)
         next_marker = None
         response = lambda_client.list_functions()
