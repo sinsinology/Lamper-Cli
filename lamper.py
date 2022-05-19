@@ -47,7 +47,7 @@ def banner():
     print( colorama.Fore.LIGHTYELLOW_EX + """
      ____________________________
 < Lamper (AWS Lambda Mapper) By @MDSecLabs>
-< Version: 0.1.9 >
+< Version: 0.2.2 >
  ----------------------------
 \
  \
@@ -199,7 +199,7 @@ def create_tables(lambdas_data, args):
             report_rows.append(f"""
                                 <tr>
                                     <td>{str(function_data['FunctionName'])}</td>
-                                    <td>{str(function_data['Runtime'])}</td>
+                                    <td>N/A</td>
                                     <td>{lambda_data['region']}</td>
                                     <td>{function_data['Description']}</td>
                                     <td>{get_days_ago(lambda_data['last-modified'])}</td>
@@ -237,7 +237,7 @@ def create_tables(lambdas_data, args):
         { from: "FUNCTION_NAME", to: "REGION_NAME" },
         """.replace("FUNCTION_NAME", str(function_data['FunctionName'])).replace("REGION_NAME", lambda_data['region']))
 
-        runtimes.append(str(function_data['Runtime']))
+        runtimes.append('N/A')
 
 
 
@@ -369,6 +369,8 @@ def print_lambda_list(args):
                     scan_secrets_result = scan_secrets(sourcecode_zip)
                 except:
                     sourcecode_zip = "N/A"
+                    scan_vulns_result = "N/A"
+                    scan_secrets_result = "N/A"
 		# Extract last invocation time from logs
                 last_invocation = get_last_invocation(
                     region,
