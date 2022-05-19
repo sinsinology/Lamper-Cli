@@ -22,7 +22,6 @@
   <p align="center">
     An easy to use AWS Lambda-Functions enumeration tool (with a report)
 
-    <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
