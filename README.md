@@ -42,8 +42,11 @@ This tool can assist you to enumerate and map available lambda functions in an A
 
 ## Getting Started
 
-[![Product Name Screen Shot][product-report]]([[https://github.com/sinsinology/Lamper-Cli](https://github.com/sinsinology/Lamper-Cli)](https://github.com/sinsinology/Lamper-Cli/))
+[![Product Name Screen Shot][product-report1]]([[https://github.com/sinsinology/Lamper-Cli](https://github.com/sinsinology/Lamper-Cli)](https://github.com/sinsinology/Lamper-Cli/))
 
+[![Product Name Screen Shot][product-report2]]([[https://github.com/sinsinology/Lamper-Cli](https://github.com/sinsinology/Lamper-Cli)](https://github.com/sinsinology/Lamper-Cli/))
+
+[![Product Name Screen Shot][product-report3]]([[https://github.com/sinsinology/Lamper-Cli](https://github.com/sinsinology/Lamper-Cli)](https://github.com/sinsinology/Lamper-Cli/))
 
 ### Installation
 
@@ -104,4 +107,6 @@ Project Link: [https://github.com/sinsinology/lamper-cli](https://github.com/sin
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/mdsec/
 [product-screenshot]: assets/images/demo.gif
-[product-report]: assets/images/report.gif
+[product-report1]: assets/images/report-01.png
+[product-report2]: assets/images/report-02.png
+[product-report3]: assets/images/report-03.png
