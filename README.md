@@ -43,7 +43,7 @@ You just need to install it via **pip** and then add your AWS keys to your envir
 ### Installation
 
   ```sh
-  pip3 install lamper-cli
+  $> pip3 install lamper-cli
   ```
 
 
@@ -53,7 +53,10 @@ You just need to install it via **pip** and then add your AWS keys to your envir
 After installation, you just need to type-in **lamper-cli** and the tools takes care of the rest
 
  ```sh
-  $> lamper-cli
+ $> export AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXX"
+ $> export AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXX"
+ $> export AWS_SESSION_TOKEN="XXXXXXXXXX"
+ $> lamper-cli
   ```
 
 
