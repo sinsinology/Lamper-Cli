@@ -33,14 +33,16 @@
 <!-- ABOUT THE PROJECT -->
 ## Lambda-Cli?
 
-[![Product Name Screen Shot][product-screenshot]]([https://example.com](https://github.com/sinsinology/Lamper-Cli/))
+[![Product Name Screen Shot][product-screenshot]]([[https://github.com/sinsinology/Lamper-Cli](https://github.com/sinsinology/Lamper-Cli)](https://github.com/sinsinology/Lamper-Cli/))
 
 This tool can assist you to enumerate and map available lambda functions in an AWS environment.
+
+## Report you say?
 
 
 ## Getting Started
 
-You just need to install it via **pip** and then add your AWS keys to your environment variables.
+[![Product Name Screen Shot][product-report]]([[https://github.com/sinsinology/Lamper-Cli](https://github.com/sinsinology/Lamper-Cli)](https://github.com/sinsinology/Lamper-Cli/))
 
 
 ### Installation
@@ -102,3 +104,4 @@ Project Link: [https://github.com/sinsinology/lamper-cli](https://github.com/sin
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/mdsec/
 [product-screenshot]: assets/images/demo.gif
+[product-report]: assets/images/report.gif
