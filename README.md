@@ -134,7 +134,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@SinSinology](https://twitter.com/SinSinology)
+[@SinSinology](https://twitter.com/SinSinology)
 Project Link: [https://github.com/sinsinology/lamper-cli](https://github.com/sinsinology/lamper-cli)
 
 
