@@ -138,3 +138,19 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@SinSinology](https://twitter.com/SinSinology)
 Project Link: [https://github.com/sinsinology/lamper-cli](https://github.com/sinsinology/lamper-cli)
+
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/sinsinology/Lamper-Cli/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/sinsinology/Lamper-Cli.svg?style=for-the-badge
+[forks-url]: https://github.com/sinsinology/Lamper-Cli/network/members
+[stars-shield]: https://img.shields.io/github/stars/sinsinology/Lamper-Cli.svg?style=for-the-badge
+[stars-url]: https://github.com/sinsinology/Lamper-Cli/stargazers
+[issues-shield]: https://img.shields.io/github/issues/sinsinology/Lamper-Cli.svg?style=for-the-badge
+[issues-url]: https://github.com/sinsinology/Lamper-Cli/issues
+[license-shield]: https://img.shields.io/github/license/sinsinology/Lamper-Cli.svg?style=for-the-badge
+[license-url]: https://github.com/sinsinology/Lamper-Cli/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/company/mdsec/
+[product-screenshot]: assets/images/screenshot.png
