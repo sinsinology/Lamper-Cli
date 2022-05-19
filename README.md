@@ -1,5 +1,5 @@
 
-<div id="top" align="center"></div>
+<div id="top"></div>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
