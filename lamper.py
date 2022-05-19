@@ -47,7 +47,7 @@ def banner():
     print( colorama.Fore.LIGHTYELLOW_EX + """
      ____________________________
 < Lamper (AWS Lambda Mapper) By @MDSecLabs>
-< Version: 0.1.3 >
+< Version: 0.1.9 >
  ----------------------------
 \
  \
@@ -195,25 +195,39 @@ def create_tables(lambdas_data, args):
             '"' + function_data['Description'] + '"'
         ])
 
+        if(lambda_data['sourcecode'] == 'N/A'):
+            report_rows.append(f"""
+                                <tr>
+                                    <td>{str(function_data['FunctionName'])}</td>
+                                    <td>{str(function_data['Runtime'])}</td>
+                                    <td>{lambda_data['region']}</td>
+                                    <td>{function_data['Description']}</td>
+                                    <td>{get_days_ago(lambda_data['last-modified'])}</td>
+                                    <td>{last_invocation}</td>
+                                    <td>
+                                    N/A
+                                    </td>
+                                </tr>
+            """)
+        else:
+            report_rows.append(f"""
+                                <tr>
+                                    <td>{str(function_data['FunctionName'])}</td>
+                                    <td>{str(function_data['Runtime'])}</td>
+                                    <td>{lambda_data['region']}</td>
+                                    <td>{function_data['Description']}</td>
+                                    <td>{get_days_ago(lambda_data['last-modified'])}</td>
+                                    <td>{last_invocation}</td>
+                                    <td>
+                                <div class="btn-group d-flex" role="group" aria-label="...">
 
-        report_rows.append(f"""
-                            <tr>
-                                <td>{str(function_data['FunctionName'])}</td>
-                                <td>{str(function_data['Runtime'])}</td>
-                                <td>{lambda_data['region']}</td>
-                                <td>{function_data['Description']}</td>
-                                <td>{get_days_ago(lambda_data['last-modified'])}</td>
-                                <td>{last_invocation}</td>
-                                <td>
-                            <div class="btn-group d-flex" role="group" aria-label="...">
 
-
-                                <!--  <a href='{lambda_data['scan_secrets']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Secrets" type="button" class="btn btn-warning w-100"><i class="fa fa-key"></i></a> -->
-                                <!-- <a href='{lambda_data['scan_vulns']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Vulnerability Scan" type="button" class="btn btn-danger w-100"><i class="fa fa-bug"></i></a> -->
-                                <a href='{"functions" + lambda_data['sourcecode'].replace("lamper-output", '').split("functions")[1]}' target="_blank" data-toggle="tooltip" data-placement="top" title="Source Code" type="button" class="btn btn-primary w-100"><i class="fa fa-download"></i></a>
-                                </td>
-                            </tr>
-        """)
+                                    <!--  <a href='{lambda_data['scan_secrets']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Secrets" type="button" class="btn btn-warning w-100"><i class="fa fa-key"></i></a> -->
+                                    <!-- <a href='{lambda_data['scan_vulns']}' target="_blank" data-toggle="tooltip" data-placement="top" title="Vulnerability Scan" type="button" class="btn btn-danger w-100"><i class="fa fa-bug"></i></a> -->
+                                    <a href='{"functions" + lambda_data['sourcecode'].replace("lamper-output", '').split("functions")[1]}' target="_blank" data-toggle="tooltip" data-placement="top" title="Source Code" type="button" class="btn btn-primary w-100"><i class="fa fa-download"></i></a>
+                                    </td>
+                                </tr>
+            """)
 
         viz_function_nodes.append("""
         { id: "FUNCTION_NAME", label: "FUNCTION_NAME", shape: "dot", size:10 },
@@ -323,7 +337,13 @@ def print_lambda_list(args):
     for region in tqdm(regions):
         lambda_client = init_boto_client('lambda', region, args)
         next_marker = None
-        response = lambda_client.list_functions()
+        try:
+            response = lambda_client.list_functions()
+        except Exception as e:
+            print(colorama.Fore.LIGHTCYAN_EX)
+            print("[EXIT] Received Error (make sure you've added AWS keys to your env variable):")
+            print(e)
+            exit()
         while next_marker != '':
             next_marker = ''
             functions = response['Functions']
@@ -340,14 +360,16 @@ def print_lambda_list(args):
 
                 func_details  = lambda_client.get_function(FunctionName=function_data['FunctionName'])
                 sourcecode_zip = exportPath + function_data['FunctionName'] + "-" + str(uuid.uuid4()) + '.zip'
-                url = func_details['Code']['Location']
-                r = requests.get(url)
-                with open(sourcecode_zip, "wb") as code:
-                    code.write(r.content)
-                scan_vulns_result = scan_vulns(sourcecode_zip)
-                scan_secrets_result = scan_secrets(sourcecode_zip)
-
-                # Extract last invocation time from logs
+                try:
+                    url = func_details['Code']['Location']
+                    r = requests.get(url)
+                    with open(sourcecode_zip, "wb") as code:
+                        code.write(r.content)
+                    scan_vulns_result = scan_vulns(sourcecode_zip)
+                    scan_secrets_result = scan_secrets(sourcecode_zip)
+                except:
+                    sourcecode_zip = "N/A"
+		# Extract last invocation time from logs
                 last_invocation = get_last_invocation(
                     region,
                     args,
@@ -394,7 +416,7 @@ def print_lambda_list(args):
             output_file.writelines(output_line)
 
 
-if __name__ == '__main__':
+def main():
     banner()
     parser = argparse.ArgumentParser(
         description=(
@@ -471,3 +493,7 @@ if __name__ == '__main__':
         exit(1)
 
     print_lambda_list(arguments)
+
+
+if __name__ == '__main__':
+    main()
