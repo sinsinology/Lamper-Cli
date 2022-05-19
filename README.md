@@ -141,7 +141,7 @@ Project Link: [https://github.com/sinsinology/lamper-cli](https://github.com/sin
 
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/sinsinology/Lamper-Cli.svg?style=for-the-badge
 [contributors-url]: https://github.com/sinsinology/Lamper-Cli/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/sinsinology/Lamper-Cli.svg?style=for-the-badge
 [forks-url]: https://github.com/sinsinology/Lamper-Cli/network/members
