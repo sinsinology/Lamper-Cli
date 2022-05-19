@@ -9,6 +9,7 @@
 
 
 
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -36,30 +37,23 @@ This tool can assist you to enumerate and map available lambda functions in an A
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+You just need to install it via **pip** and then add your AWS keys to your environment variables.
 
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
   ```sh
   pip3 install lamper-cli
   ```
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+After installation, you just need to type-in **lamper-cli** and the tools takes care of the rest
 
  ```sh
-  pip3 install lamper-cli
+  $> lamper-cli
   ```
 
 
@@ -72,7 +66,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 - [ ] Basic dependency vulnerability scan
 - [ ] Scan for secrets
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/sinsinology/Lamper-Cli/issues) for a full list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -81,10 +75,6 @@ Contributions are what make the open source community such an amazing place to l
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- CONTACT -->
