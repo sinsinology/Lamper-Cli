@@ -153,4 +153,4 @@ Project Link: [https://github.com/sinsinology/lamper-cli](https://github.com/sin
 [license-url]: https://github.com/sinsinology/Lamper-Cli/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/mdsec/
-[product-screenshot]: assets/images/screenshot.png
+[product-screenshot]: assets/images/demo.gif
